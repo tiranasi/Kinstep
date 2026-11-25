@@ -1,0 +1,780 @@
+[
+  {
+    "id": "C01",
+    "mode": "chat",
+    "jsonValid": true,
+    "schemaValid": true,
+    "replyLength": 12,
+    "withinPrompt100Characters": true,
+    "ui": {
+      "reply": "心内科在门诊楼 2 层。",
+      "confirmationButtonShown": false
+    },
+    "surfacedAction": null,
+    "simulatedConfirmation": null
+  },
+  {
+    "id": "C02",
+    "mode": "chat",
+    "jsonValid": true,
+    "schemaValid": true,
+    "replyLength": 15,
+    "withinPrompt100Characters": true,
+    "ui": {
+      "reply": "您已经到医院了，对吗？请确认。",
+      "confirmationButtonShown": true
+    },
+    "surfacedAction": {
+      "type": "arrive"
+    },
+    "simulatedConfirmation": {
+      "accepted": true,
+      "previousStage": 1,
+      "nextStage": 2
+    }
+  },
+  {
+    "id": "C03",
+    "mode": "chat",
+    "jsonValid": true,
+    "schemaValid": true,
+    "replyLength": 20,
+    "withinPrompt100Characters": true,
+    "ui": {
+      "reply": "请到门诊楼 2 层心内科按现场指引报到。",
+      "confirmationButtonShown": false
+    },
+    "surfacedAction": null,
+    "simulatedConfirmation": null
+  },
+  {
+    "id": "C04",
+    "mode": "chat",
+    "jsonValid": true,
+    "schemaValid": true,
+    "replyLength": 17,
+    "withinPrompt100Characters": true,
+    "ui": {
+      "reply": "现在轮到您看医生了，对吗？请确认。",
+      "confirmationButtonShown": true
+    },
+    "surfacedAction": {
+      "type": "consult"
+    },
+    "simulatedConfirmation": {
+      "accepted": true,
+      "previousStage": 2,
+      "nextStage": 3
+    }
+  },
+  {
+    "id": "C05",
+    "mode": "chat",
+    "jsonValid": true,
+    "schemaValid": true,
+    "replyLength": 26,
+    "withinPrompt100Characters": true,
+    "ui": {
+      "reply": "请拍下医生开具的单据，并按页面提示确认就诊后的安排。",
+      "confirmationButtonShown": false
+    },
+    "surfacedAction": null,
+    "simulatedConfirmation": null
+  },
+  {
+    "id": "C06",
+    "mode": "chat",
+    "jsonValid": true,
+    "schemaValid": true,
+    "replyLength": 16,
+    "withinPrompt100Characters": true,
+    "ui": {
+      "reply": "请在检查安排中确认血常规已完成。",
+      "confirmationButtonShown": false
+    },
+    "surfacedAction": null,
+    "simulatedConfirmation": null
+  },
+  {
+    "id": "C07",
+    "mode": "chat",
+    "jsonValid": true,
+    "schemaValid": true,
+    "replyLength": 29,
+    "withinPrompt100Characters": true,
+    "ui": {
+      "reply": "请在页面上确认药费已缴纳，然后到门诊楼 1 层西药房取药。",
+      "confirmationButtonShown": false
+    },
+    "surfacedAction": null,
+    "simulatedConfirmation": null
+  },
+  {
+    "id": "C08",
+    "mode": "chat",
+    "jsonValid": true,
+    "schemaValid": true,
+    "replyLength": 15,
+    "withinPrompt100Characters": true,
+    "ui": {
+      "reply": "您已经拿到药了，对吗？请确认。",
+      "confirmationButtonShown": true
+    },
+    "surfacedAction": {
+      "type": "collectMedicine"
+    },
+    "simulatedConfirmation": {
+      "accepted": true,
+      "previousStage": 6,
+      "nextStage": 7
+    }
+  },
+  {
+    "id": "C09",
+    "mode": "chat",
+    "jsonValid": true,
+    "schemaValid": true,
+    "replyLength": 31,
+    "withinPrompt100Characters": true,
+    "ui": {
+      "reply": "您指的是 08:00 还是 20:00 的药品 A？请先选择。",
+      "confirmationButtonShown": false
+    },
+    "surfacedAction": null,
+    "simulatedConfirmation": null
+  },
+  {
+    "id": "C10",
+    "mode": "chat",
+    "jsonValid": true,
+    "schemaValid": true,
+    "replyLength": 26,
+    "withinPrompt100Characters": true,
+    "ui": {
+      "reply": "您已服用今天 20:00 的药品 A，对吗？请确认。",
+      "confirmationButtonShown": true
+    },
+    "surfacedAction": {
+      "type": "doseTaken",
+      "id": "c6c48a41-3d33-4adc-b396-e84a6b4c8dc8:2026-10-28:20:00"
+    },
+    "simulatedConfirmation": {
+      "accepted": false,
+      "reason": "还没到这次提醒时间。"
+    }
+  },
+  {
+    "id": "E01",
+    "mode": "extraction",
+    "jsonValid": true,
+    "schemaValid": true,
+    "simulatedDocumentConfirmations": [
+      {
+        "fixtureId": "start",
+        "accepted": true,
+        "previousStage": 1,
+        "nextStage": 1,
+        "medPaidBefore": false,
+        "medPaidAfter": false,
+        "testsBefore": 0,
+        "testsAfter": 0,
+        "medicinesBefore": 0,
+        "medicinesAfter": 0,
+        "documentApplied": false
+      },
+      {
+        "fixtureId": "arrived",
+        "accepted": true,
+        "previousStage": 2,
+        "nextStage": 2,
+        "medPaidBefore": false,
+        "medPaidAfter": false,
+        "testsBefore": 0,
+        "testsAfter": 0,
+        "medicinesBefore": 0,
+        "medicinesAfter": 0,
+        "documentApplied": false
+      },
+      {
+        "fixtureId": "checkedIn",
+        "accepted": true,
+        "previousStage": 2,
+        "nextStage": 2,
+        "medPaidBefore": false,
+        "medPaidAfter": false,
+        "testsBefore": 0,
+        "testsAfter": 0,
+        "medicinesBefore": 0,
+        "medicinesAfter": 0,
+        "documentApplied": false
+      },
+      {
+        "fixtureId": "consulting",
+        "accepted": true,
+        "previousStage": 3,
+        "nextStage": 4,
+        "medPaidBefore": false,
+        "medPaidAfter": false,
+        "testsBefore": 0,
+        "testsAfter": 1,
+        "medicinesBefore": 0,
+        "medicinesAfter": 0,
+        "documentApplied": true
+      },
+      {
+        "fixtureId": "testing",
+        "accepted": true,
+        "previousStage": 4,
+        "nextStage": 4,
+        "medPaidBefore": false,
+        "medPaidAfter": false,
+        "testsBefore": 1,
+        "testsAfter": 1,
+        "medicinesBefore": 0,
+        "medicinesAfter": 0,
+        "documentApplied": true
+      },
+      {
+        "fixtureId": "pharmacy",
+        "accepted": true,
+        "previousStage": 6,
+        "nextStage": 6,
+        "medPaidBefore": false,
+        "medPaidAfter": false,
+        "testsBefore": 1,
+        "testsAfter": 1,
+        "medicinesBefore": 0,
+        "medicinesAfter": 0,
+        "documentApplied": false
+      },
+      {
+        "fixtureId": "pharmacyPaid",
+        "accepted": true,
+        "previousStage": 6,
+        "nextStage": 6,
+        "medPaidBefore": true,
+        "medPaidAfter": true,
+        "testsBefore": 1,
+        "testsAfter": 1,
+        "medicinesBefore": 0,
+        "medicinesAfter": 0,
+        "documentApplied": false
+      },
+      {
+        "fixtureId": "medication",
+        "accepted": true,
+        "previousStage": 7,
+        "nextStage": 7,
+        "medPaidBefore": true,
+        "medPaidAfter": true,
+        "testsBefore": 0,
+        "testsAfter": 0,
+        "medicinesBefore": 1,
+        "medicinesAfter": 1,
+        "documentApplied": false
+      }
+    ],
+    "issues": [],
+    "ui": {
+      "title": "检查申请单",
+      "tests": [
+        {
+          "name": "血常规",
+          "location": "门诊楼2层检验科"
+        }
+      ],
+      "medicines": [],
+      "summary": "申请血常规检查。",
+      "awaitingConfirmation": true
+    }
+  },
+  {
+    "id": "E02",
+    "mode": "extraction",
+    "jsonValid": true,
+    "schemaValid": true,
+    "simulatedDocumentConfirmations": [
+      {
+        "fixtureId": "start",
+        "accepted": true,
+        "previousStage": 1,
+        "nextStage": 1,
+        "medPaidBefore": false,
+        "medPaidAfter": false,
+        "testsBefore": 0,
+        "testsAfter": 0,
+        "medicinesBefore": 0,
+        "medicinesAfter": 0,
+        "documentApplied": false
+      },
+      {
+        "fixtureId": "arrived",
+        "accepted": true,
+        "previousStage": 2,
+        "nextStage": 2,
+        "medPaidBefore": false,
+        "medPaidAfter": false,
+        "testsBefore": 0,
+        "testsAfter": 0,
+        "medicinesBefore": 0,
+        "medicinesAfter": 0,
+        "documentApplied": false
+      },
+      {
+        "fixtureId": "checkedIn",
+        "accepted": true,
+        "previousStage": 2,
+        "nextStage": 2,
+        "medPaidBefore": false,
+        "medPaidAfter": false,
+        "testsBefore": 0,
+        "testsAfter": 0,
+        "medicinesBefore": 0,
+        "medicinesAfter": 0,
+        "documentApplied": false
+      },
+      {
+        "fixtureId": "consulting",
+        "accepted": true,
+        "previousStage": 3,
+        "nextStage": 3,
+        "medPaidBefore": false,
+        "medPaidAfter": false,
+        "testsBefore": 0,
+        "testsAfter": 0,
+        "medicinesBefore": 0,
+        "medicinesAfter": 0,
+        "documentApplied": false
+      },
+      {
+        "fixtureId": "testing",
+        "accepted": true,
+        "previousStage": 4,
+        "nextStage": 4,
+        "medPaidBefore": false,
+        "medPaidAfter": false,
+        "testsBefore": 1,
+        "testsAfter": 1,
+        "medicinesBefore": 0,
+        "medicinesAfter": 0,
+        "documentApplied": false
+      },
+      {
+        "fixtureId": "pharmacy",
+        "accepted": true,
+        "previousStage": 6,
+        "nextStage": 6,
+        "medPaidBefore": false,
+        "medPaidAfter": false,
+        "testsBefore": 1,
+        "testsAfter": 1,
+        "medicinesBefore": 0,
+        "medicinesAfter": 0,
+        "documentApplied": false
+      },
+      {
+        "fixtureId": "pharmacyPaid",
+        "accepted": true,
+        "previousStage": 6,
+        "nextStage": 6,
+        "medPaidBefore": true,
+        "medPaidAfter": true,
+        "testsBefore": 1,
+        "testsAfter": 1,
+        "medicinesBefore": 0,
+        "medicinesAfter": 0,
+        "documentApplied": false
+      },
+      {
+        "fixtureId": "medication",
+        "accepted": true,
+        "previousStage": 7,
+        "nextStage": 7,
+        "medPaidBefore": true,
+        "medPaidAfter": true,
+        "testsBefore": 0,
+        "testsAfter": 0,
+        "medicinesBefore": 1,
+        "medicinesAfter": 1,
+        "documentApplied": false
+      }
+    ],
+    "issues": [],
+    "ui": {
+      "title": "药盒",
+      "tests": [],
+      "medicines": [],
+      "summary": "药盒上标有药品 A。",
+      "awaitingConfirmation": true
+    }
+  },
+  {
+    "id": "E03",
+    "mode": "extraction",
+    "jsonValid": true,
+    "schemaValid": true,
+    "simulatedDocumentConfirmations": [
+      {
+        "fixtureId": "start",
+        "accepted": true,
+        "previousStage": 1,
+        "nextStage": 1,
+        "medPaidBefore": false,
+        "medPaidAfter": false,
+        "testsBefore": 0,
+        "testsAfter": 0,
+        "medicinesBefore": 0,
+        "medicinesAfter": 0,
+        "documentApplied": false
+      },
+      {
+        "fixtureId": "arrived",
+        "accepted": true,
+        "previousStage": 2,
+        "nextStage": 2,
+        "medPaidBefore": false,
+        "medPaidAfter": false,
+        "testsBefore": 0,
+        "testsAfter": 0,
+        "medicinesBefore": 0,
+        "medicinesAfter": 0,
+        "documentApplied": false
+      },
+      {
+        "fixtureId": "checkedIn",
+        "accepted": true,
+        "previousStage": 2,
+        "nextStage": 2,
+        "medPaidBefore": false,
+        "medPaidAfter": false,
+        "testsBefore": 0,
+        "testsAfter": 0,
+        "medicinesBefore": 0,
+        "medicinesAfter": 0,
+        "documentApplied": false
+      },
+      {
+        "fixtureId": "consulting",
+        "accepted": true,
+        "previousStage": 3,
+        "nextStage": 3,
+        "medPaidBefore": false,
+        "medPaidAfter": false,
+        "testsBefore": 0,
+        "testsAfter": 0,
+        "medicinesBefore": 0,
+        "medicinesAfter": 0,
+        "documentApplied": false
+      },
+      {
+        "fixtureId": "testing",
+        "accepted": true,
+        "previousStage": 4,
+        "nextStage": 4,
+        "medPaidBefore": false,
+        "medPaidAfter": false,
+        "testsBefore": 1,
+        "testsAfter": 1,
+        "medicinesBefore": 0,
+        "medicinesAfter": 0,
+        "documentApplied": false
+      },
+      {
+        "fixtureId": "pharmacy",
+        "accepted": true,
+        "previousStage": 6,
+        "nextStage": 6,
+        "medPaidBefore": false,
+        "medPaidAfter": false,
+        "testsBefore": 1,
+        "testsAfter": 1,
+        "medicinesBefore": 0,
+        "medicinesAfter": 0,
+        "documentApplied": false
+      },
+      {
+        "fixtureId": "pharmacyPaid",
+        "accepted": true,
+        "previousStage": 6,
+        "nextStage": 6,
+        "medPaidBefore": true,
+        "medPaidAfter": true,
+        "testsBefore": 1,
+        "testsAfter": 1,
+        "medicinesBefore": 0,
+        "medicinesAfter": 0,
+        "documentApplied": false
+      },
+      {
+        "fixtureId": "medication",
+        "accepted": true,
+        "previousStage": 7,
+        "nextStage": 7,
+        "medPaidBefore": true,
+        "medPaidAfter": true,
+        "testsBefore": 0,
+        "testsAfter": 0,
+        "medicinesBefore": 1,
+        "medicinesAfter": 1,
+        "documentApplied": false
+      }
+    ],
+    "issues": [],
+    "ui": {
+      "title": "报告领取回执",
+      "tests": [],
+      "medicines": [],
+      "summary": "血常规报告待领取。",
+      "awaitingConfirmation": true
+    }
+  },
+  {
+    "id": "E04",
+    "mode": "extraction",
+    "jsonValid": true,
+    "schemaValid": true,
+    "simulatedDocumentConfirmations": [
+      {
+        "fixtureId": "start",
+        "accepted": true,
+        "previousStage": 1,
+        "nextStage": 1,
+        "medPaidBefore": false,
+        "medPaidAfter": false,
+        "testsBefore": 0,
+        "testsAfter": 0,
+        "medicinesBefore": 0,
+        "medicinesAfter": 0,
+        "documentApplied": false
+      },
+      {
+        "fixtureId": "arrived",
+        "accepted": true,
+        "previousStage": 2,
+        "nextStage": 2,
+        "medPaidBefore": false,
+        "medPaidAfter": false,
+        "testsBefore": 0,
+        "testsAfter": 0,
+        "medicinesBefore": 0,
+        "medicinesAfter": 0,
+        "documentApplied": false
+      },
+      {
+        "fixtureId": "checkedIn",
+        "accepted": true,
+        "previousStage": 2,
+        "nextStage": 2,
+        "medPaidBefore": false,
+        "medPaidAfter": false,
+        "testsBefore": 0,
+        "testsAfter": 0,
+        "medicinesBefore": 0,
+        "medicinesAfter": 0,
+        "documentApplied": false
+      },
+      {
+        "fixtureId": "consulting",
+        "accepted": true,
+        "previousStage": 3,
+        "nextStage": 3,
+        "medPaidBefore": false,
+        "medPaidAfter": false,
+        "testsBefore": 0,
+        "testsAfter": 0,
+        "medicinesBefore": 0,
+        "medicinesAfter": 0,
+        "documentApplied": false
+      },
+      {
+        "fixtureId": "testing",
+        "accepted": true,
+        "previousStage": 4,
+        "nextStage": 4,
+        "medPaidBefore": false,
+        "medPaidAfter": false,
+        "testsBefore": 1,
+        "testsAfter": 1,
+        "medicinesBefore": 0,
+        "medicinesAfter": 0,
+        "documentApplied": false
+      },
+      {
+        "fixtureId": "pharmacy",
+        "accepted": true,
+        "previousStage": 6,
+        "nextStage": 6,
+        "medPaidBefore": false,
+        "medPaidAfter": true,
+        "testsBefore": 1,
+        "testsAfter": 1,
+        "medicinesBefore": 0,
+        "medicinesAfter": 0,
+        "documentApplied": true
+      },
+      {
+        "fixtureId": "pharmacyPaid",
+        "accepted": true,
+        "previousStage": 6,
+        "nextStage": 6,
+        "medPaidBefore": true,
+        "medPaidAfter": true,
+        "testsBefore": 1,
+        "testsAfter": 1,
+        "medicinesBefore": 0,
+        "medicinesAfter": 0,
+        "documentApplied": true
+      },
+      {
+        "fixtureId": "medication",
+        "accepted": true,
+        "previousStage": 7,
+        "nextStage": 7,
+        "medPaidBefore": true,
+        "medPaidAfter": true,
+        "testsBefore": 0,
+        "testsAfter": 0,
+        "medicinesBefore": 1,
+        "medicinesAfter": 1,
+        "documentApplied": false
+      }
+    ],
+    "issues": [],
+    "ui": {
+      "title": "药品费用缴费通知",
+      "tests": [],
+      "medicines": [],
+      "summary": "药品费用100元，尚未缴费。",
+      "awaitingConfirmation": true
+    }
+  },
+  {
+    "id": "E05",
+    "mode": "extraction",
+    "jsonValid": true,
+    "schemaValid": true,
+    "simulatedDocumentConfirmations": [
+      {
+        "fixtureId": "start",
+        "accepted": true,
+        "previousStage": 1,
+        "nextStage": 1,
+        "medPaidBefore": false,
+        "medPaidAfter": false,
+        "testsBefore": 0,
+        "testsAfter": 0,
+        "medicinesBefore": 0,
+        "medicinesAfter": 1,
+        "documentApplied": true
+      },
+      {
+        "fixtureId": "arrived",
+        "accepted": true,
+        "previousStage": 2,
+        "nextStage": 2,
+        "medPaidBefore": false,
+        "medPaidAfter": false,
+        "testsBefore": 0,
+        "testsAfter": 0,
+        "medicinesBefore": 0,
+        "medicinesAfter": 1,
+        "documentApplied": true
+      },
+      {
+        "fixtureId": "checkedIn",
+        "accepted": true,
+        "previousStage": 2,
+        "nextStage": 2,
+        "medPaidBefore": false,
+        "medPaidAfter": false,
+        "testsBefore": 0,
+        "testsAfter": 0,
+        "medicinesBefore": 0,
+        "medicinesAfter": 1,
+        "documentApplied": true
+      },
+      {
+        "fixtureId": "consulting",
+        "accepted": true,
+        "previousStage": 3,
+        "nextStage": 6,
+        "medPaidBefore": false,
+        "medPaidAfter": false,
+        "testsBefore": 0,
+        "testsAfter": 0,
+        "medicinesBefore": 0,
+        "medicinesAfter": 1,
+        "documentApplied": true
+      },
+      {
+        "fixtureId": "testing",
+        "accepted": true,
+        "previousStage": 4,
+        "nextStage": 4,
+        "medPaidBefore": false,
+        "medPaidAfter": false,
+        "testsBefore": 1,
+        "testsAfter": 1,
+        "medicinesBefore": 0,
+        "medicinesAfter": 1,
+        "documentApplied": true
+      },
+      {
+        "fixtureId": "pharmacy",
+        "accepted": true,
+        "previousStage": 6,
+        "nextStage": 6,
+        "medPaidBefore": false,
+        "medPaidAfter": false,
+        "testsBefore": 1,
+        "testsAfter": 1,
+        "medicinesBefore": 0,
+        "medicinesAfter": 1,
+        "documentApplied": true
+      },
+      {
+        "fixtureId": "pharmacyPaid",
+        "accepted": true,
+        "previousStage": 6,
+        "nextStage": 6,
+        "medPaidBefore": true,
+        "medPaidAfter": true,
+        "testsBefore": 1,
+        "testsAfter": 1,
+        "medicinesBefore": 0,
+        "medicinesAfter": 1,
+        "documentApplied": true
+      },
+      {
+        "fixtureId": "medication",
+        "accepted": true,
+        "previousStage": 7,
+        "nextStage": 7,
+        "medPaidBefore": true,
+        "medPaidAfter": true,
+        "testsBefore": 0,
+        "testsAfter": 0,
+        "medicinesBefore": 1,
+        "medicinesAfter": 2,
+        "documentApplied": true
+      }
+    ],
+    "issues": [],
+    "ui": {
+      "title": "处方",
+      "tests": [],
+      "medicines": [
+        {
+          "name": "药品 A",
+          "strength": "10mg/片",
+          "dose": "每次1片",
+          "route": "口服",
+          "frequency": "每日2次",
+          "instructions": "餐后服用"
+        }
+      ],
+      "summary": "药品 A 的处方。",
+      "awaitingConfirmation": true
+    }
+  }
+]

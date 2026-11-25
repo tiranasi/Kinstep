@@ -1,0 +1,13 @@
+{
+  "evidenceType": "Constructed contract probes; not model outputs",
+  "longReply": {
+    "replyLength": 101,
+    "exceedsPromptLimit": true,
+    "acceptedByCurrentReplySchema": true
+  },
+  "actionReplyConsistency": {
+    "acceptedByCurrentReplySchema": true,
+    "confirmationButtonShown": false,
+    "displayedReply": "请点击确认。"
+  }
+}

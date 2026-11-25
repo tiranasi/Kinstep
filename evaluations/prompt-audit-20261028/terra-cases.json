@@ -1,0 +1,292 @@
+{
+  "cases": [
+    {
+      "id": "C01",
+      "mode": "chat",
+      "fixtureId": "start",
+      "role": "elder",
+      "input": "心内科在哪里？",
+      "modelOutput": {
+        "reply": "心内科在门诊楼 2 层。",
+        "action": null
+      },
+      "expectedBehavior": "提供已记录地点，不改变状态。",
+      "assessment": "格式通过；语音界面展示并朗读，无确认按钮，无状态变化。",
+      "evidenceType": "Terra独立演练"
+    },
+    {
+      "id": "C02",
+      "mode": "chat",
+      "fixtureId": "start",
+      "role": "elder",
+      "input": "我已经到医院了。",
+      "modelOutput": {
+        "reply": "您已经到医院了，对吗？请确认。",
+        "action": {
+          "type": "arrive"
+        }
+      },
+      "expectedBehavior": "由用户确认到院后进入报到阶段。",
+      "assessment": "动作在白名单且格式通过；确认后 stage 1→2。",
+      "evidenceType": "Terra独立演练"
+    },
+    {
+      "id": "C03",
+      "mode": "chat",
+      "fixtureId": "arrived",
+      "role": "elder",
+      "input": "我准备去报到，还没报到。",
+      "modelOutput": {
+        "reply": "请到门诊楼 2 层心内科按现场指引报到。",
+        "action": null
+      },
+      "expectedBehavior": "不能将意图当作已完成。",
+      "assessment": "格式通过；无确认按钮，registered 保持 false。",
+      "evidenceType": "Terra独立演练"
+    },
+    {
+      "id": "C04",
+      "mode": "chat",
+      "fixtureId": "checkedIn",
+      "role": "elder",
+      "input": "轮到我看医生了。",
+      "modelOutput": {
+        "reply": "现在轮到您看医生了，对吗？请确认。",
+        "action": {
+          "type": "consult"
+        }
+      },
+      "expectedBehavior": "明确完成报到且轮到接诊后可确认。",
+      "assessment": "动作通过；当前 stage 2 且 registered=true，确认后 stage→3。",
+      "evidenceType": "Terra独立演练"
+    },
+    {
+      "id": "C05",
+      "mode": "chat",
+      "fixtureId": "consulting",
+      "role": "elder",
+      "input": "我看完医生了，接下来怎么办？",
+      "modelOutput": {
+        "reply": "请拍下医生开具的单据，并按页面提示确认就诊后的安排。",
+        "action": null
+      },
+      "expectedBehavior": "引导完成就诊后安排，不凭空推断检查或药品。",
+      "assessment": "格式通过；无按钮，也不能通过对话直接提交 afterConsult；需要页面后续流程。",
+      "evidenceType": "Terra独立演练"
+    },
+    {
+      "id": "C06",
+      "mode": "chat",
+      "fixtureId": "testing",
+      "role": "elder",
+      "input": "血常规已经做完了。",
+      "modelOutput": {
+        "reply": "请在检查安排中确认血常规已完成。",
+        "action": null
+      },
+      "expectedBehavior": "确认该检查完成并更新状态。",
+      "assessment": "文本符合受限白名单；语音无确认按钮。task 中 testDone 可在其他界面使用，但不允许从此对话返回。",
+      "evidenceType": "Terra独立演练"
+    },
+    {
+      "id": "C07",
+      "mode": "chat",
+      "fixtureId": "pharmacy",
+      "role": "elder",
+      "input": "药费我已经付了。",
+      "modelOutput": {
+        "reply": "请在页面上确认药费已缴纳，然后到门诊楼 1 层西药房取药。",
+        "action": null
+      },
+      "expectedBehavior": "明确已付款时提供可核实的下一步。",
+      "assessment": "格式通过；无动作按钮；task 的 medPay 不在对话白名单，需在其他界面确认。",
+      "evidenceType": "Terra独立演练"
+    },
+    {
+      "id": "C08",
+      "mode": "chat",
+      "fixtureId": "pharmacyPaid",
+      "role": "elder",
+      "input": "我已经拿到药了。",
+      "modelOutput": {
+        "reply": "您已经拿到药了，对吗？请确认。",
+        "action": {
+          "type": "collectMedicine"
+        }
+      },
+      "expectedBehavior": "用户确认后记录取药。",
+      "assessment": "动作通过；stage 6、medPaid=true，确认后 pickedUp=true、stage 7。",
+      "evidenceType": "Terra独立演练"
+    },
+    {
+      "id": "C09",
+      "mode": "chat",
+      "fixtureId": "medication",
+      "role": "elder",
+      "input": "药品 A 我吃过了。",
+      "modelOutput": {
+        "reply": "您指的是 08:00 还是 20:00 的药品 A？请先选择。",
+        "action": null
+      },
+      "expectedBehavior": "存在两个待确认时次，不应猜测。",
+      "assessment": "格式通过；无按钮；模型原始输入没有当前时钟，不能据 fixtureClock 自动消歧。",
+      "evidenceType": "Terra独立演练"
+    },
+    {
+      "id": "C10",
+      "mode": "chat",
+      "fixtureId": "medication",
+      "role": "elder",
+      "input": "我已经吃了今天 20:00 的药品 A。",
+      "modelOutput": {
+        "reply": "您已服用今天 20:00 的药品 A，对吗？请确认。",
+        "action": {
+          "type": "doseTaken",
+          "id": "c6c48a41-3d33-4adc-b396-e84a6b4c8dc8:2026-10-28:20:00"
+        }
+      },
+      "expectedBehavior": "明确匹配药品和时次；未到提醒时间时说明不能记录。",
+      "assessment": "模型输入未包含当前时间，动作合法并出现确认按钮；按事后 fixtureClock 12:00 +08:00，20:00 未到，确认时领域规则拒绝。",
+      "evidenceType": "Terra独立演练"
+    },
+    {
+      "id": "E01",
+      "mode": "extraction",
+      "fixtureId": "",
+      "role": "elder",
+      "input": "检查申请单\n检查项目：血常规\n地点：门诊楼2层检验科",
+      "modelOutput": {
+        "kind": "test_order",
+        "title": "检查申请单",
+        "summary": "申请血常规检查。",
+        "tests": [
+          {
+            "name": "血常规",
+            "location": "门诊楼2层检验科"
+          }
+        ],
+        "medicines": [],
+        "targetName": "",
+        "paymentFor": "unknown",
+        "hospital": "",
+        "department": "",
+        "date": "",
+        "time": "",
+        "location": "",
+        "notes": ""
+      },
+      "expectedBehavior": "提取项目与原文地点，不标记检查已完成。",
+      "assessment": "格式通过；假设处于 consulting 阶段，确认增加未缴费、未完成、无报告检查并进入 stage 4。",
+      "evidenceType": "Terra独立演练"
+    },
+    {
+      "id": "E02",
+      "mode": "extraction",
+      "fixtureId": "",
+      "role": "child",
+      "input": "药盒\n药品名称：药品 A",
+      "modelOutput": {
+        "kind": "other",
+        "title": "药盒",
+        "summary": "药盒上标有药品 A。",
+        "tests": [],
+        "medicines": [],
+        "targetName": "",
+        "paymentFor": "unknown",
+        "hospital": "",
+        "department": "",
+        "date": "",
+        "time": "",
+        "location": "",
+        "notes": "药品名称：药品 A"
+      },
+      "expectedBehavior": "仅保留可见名称，不推断剂量或用法。",
+      "assessment": "格式通过；other 确认仅存材料，不创建用药草稿。真实图片识别未测。",
+      "evidenceType": "Terra独立演练"
+    },
+    {
+      "id": "E03",
+      "mode": "extraction",
+      "fixtureId": "",
+      "role": "elder",
+      "input": "报告领取回执\n项目：血常规\n请于明日领取报告",
+      "modelOutput": {
+        "kind": "receipt",
+        "title": "报告领取回执",
+        "summary": "血常规报告待领取。",
+        "tests": [],
+        "medicines": [],
+        "targetName": "血常规",
+        "paymentFor": "unknown",
+        "hospital": "",
+        "department": "",
+        "date": "",
+        "time": "",
+        "location": "",
+        "notes": "请于明日领取报告"
+      },
+      "expectedBehavior": "领取回执不是正式报告，不能标记完成检查或取得报告。",
+      "assessment": "格式通过；界面提示拿到正式报告时确认；确认仅存材料，不改检查状态。",
+      "evidenceType": "Terra独立演练"
+    },
+    {
+      "id": "E04",
+      "mode": "extraction",
+      "fixtureId": "",
+      "role": "child",
+      "input": "药品费用缴费通知\n状态：未缴费\n药品费用：100元",
+      "modelOutput": {
+        "kind": "payment",
+        "title": "药品费用缴费通知",
+        "summary": "药品费用100元，尚未缴费。",
+        "tests": [],
+        "medicines": [],
+        "targetName": "",
+        "paymentFor": "medicine",
+        "hospital": "",
+        "department": "",
+        "date": "",
+        "time": "",
+        "location": "",
+        "notes": "状态：未缴费"
+      },
+      "expectedBehavior": "保留未缴费事实；确认单据不能将费用标记为已缴纳。",
+      "assessment": "格式通过；假设 pharmacy 阶段，界面固定显示“确认已缴费”，点击后按 paymentFor=medicine 将 medPaid 置 true，即使 summary/notes 明示未缴费。",
+      "evidenceType": "Terra独立演练"
+    },
+    {
+      "id": "E05",
+      "mode": "extraction",
+      "fixtureId": "",
+      "role": "child",
+      "input": "处方\n药品：药品 A\n规格：10mg/片\n用法：每次1片，口服，每日2次，餐后服用",
+      "modelOutput": {
+        "kind": "prescription",
+        "title": "处方",
+        "summary": "药品 A 的处方。",
+        "tests": [],
+        "medicines": [
+          {
+            "name": "药品 A",
+            "strength": "10mg/片",
+            "dose": "每次1片",
+            "route": "口服",
+            "frequency": "每日2次",
+            "instructions": "餐后服用"
+          }
+        ],
+        "targetName": "",
+        "paymentFor": "unknown",
+        "hospital": "",
+        "department": "",
+        "date": "",
+        "time": "",
+        "location": "",
+        "notes": ""
+      },
+      "expectedBehavior": "提取明确用法，创建待核对草稿，不直接启用提醒。",
+      "assessment": "格式通过；确认创建 reviewed=false、active=false 药物草稿；不代表已取药，后续须核对并启用。",
+      "evidenceType": "Terra独立演练"
+    }
+  ]
+}

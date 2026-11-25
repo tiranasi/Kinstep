@@ -1,0 +1,11 @@
+{
+  "threadId": "01a182f0-cb94-7ae1-bdc2-fe5247876654",
+  "requestedModel": "gpt-6.1-terra",
+  "inheritedConversationHistory": false,
+  "candidateCases": 15,
+  "deepseekCalls": 0,
+  "actualDocumentImages": 0,
+  "sourceFilesUnchanged": true,
+  "schemaAccepted": 15,
+  "chatActionsRejectedOnSimulatedConfirmation": 1
+}
